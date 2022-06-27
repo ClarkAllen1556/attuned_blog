@@ -1,14 +1,26 @@
-import { useState } from 'react'
-import logo from '@assets/img/logo.svg'
-import '@assets/styles/App.css'
+import { useState } from 'react';
+// import logo from '@assets/img/logo.svg'
+import '@assets/styles/App.css';
+import Hero from '~/components/Hero';
+import Header from '~/components/Header';
+
+import DesktopContainer from '~/components/containers/DesktopContainer';
+import MobileContainer from '~/components/containers/MobileContainer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <DesktopContainer>
+        <Header />
+      </DesktopContainer>
+
+      <MobileContainer>
+        <Hero />
+      </MobileContainer>
+
+      {/* <header className="App-header">
         <p>Hello Vite + React!</p>
         <p>
           <button type="button" onClick={() => setCount((count) => count + 1)}>
@@ -37,9 +49,9 @@ function App() {
             Vite Docs
           </a>
         </p>
-      </header>
+      </header> */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
