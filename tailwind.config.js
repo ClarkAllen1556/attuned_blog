@@ -18,9 +18,6 @@ module.exports = {
       'red-2': '#FFE8E8',
       'white-1': '#FFFFFF',
     },
-    fontFamily: {
-      sans: ['Mulish', 'sans-serif'],
-    },
     extend: {
       animation: {
         'pulse-fast': 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
