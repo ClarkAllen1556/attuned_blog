@@ -18,6 +18,8 @@
     "baseUrl": "src",
     "paths": {
       "~/*": ["./*"],
+      "@assets*": ["./src/assets*"],
+      "@public*": ["./src/public*"],
       "@/*": ["./*"]
     },
     "types": ["node"]
