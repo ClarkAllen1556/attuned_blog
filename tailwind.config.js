@@ -22,5 +22,25 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        h1: {
+          fontSize: '32px',
+          fontWeight: '700',
+          lineHeight: '40px',
+          letterSpacing: '0em',
+          textAlign: 'left',
+          color: '#c9211e',
+        },
+        h2: {
+          fontSize: '24px',
+          fontWeight: '700',
+          lineHeight: '30px',
+          letterSpacing: '0px',
+          textAlign: 'left',
+        },
+      });
+    },
+  ],
 };

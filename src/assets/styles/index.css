@@ -9,6 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  padding: 1rem;
 
   @apply dark:bg-sol-black-2 dark:text-sol-grey-1 bg-sol-tan-1 text-sol-black-2;
 }
