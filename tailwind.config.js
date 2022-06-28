@@ -14,6 +14,7 @@ module.exports = {
       'sol-grey-1': '#93a1a1',
       'sol-black-1': '#073642',
       'sol-black-2': '#002b36',
+      'white-1': '#ffffff',
       'card-title-red': '#c9211e',
     },
     extend: {
@@ -40,6 +41,12 @@ module.exports = {
           letterSpacing: '0px',
           textAlign: 'left',
         },
+        // button: {
+        //   background: '#268bd2',
+        //   color: '#ffffff',
+        //   padding: '0.5rem',
+        //   borderRadius: '0.25rem',
+        // },
       });
     },
   ],
