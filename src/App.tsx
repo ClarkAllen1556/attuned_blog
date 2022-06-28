@@ -1,55 +1,49 @@
 import { useState } from 'react';
-// import logo from '@assets/img/logo.svg'
-import '@assets/styles/App.css';
-import Hero from '~/components/Hero';
+// import Hero from '~/components/Hero';
 import Header from '~/components/Header';
+import Card from '~/components/Card';
+import Post from '~/components/Post/Post';
+import Button from './components/Button';
 
-import DesktopContainer from '~/components/containers/DesktopContainer';
-import MobileContainer from '~/components/containers/MobileContainer';
+// import DesktopContainer from '~/components/containers/DesktopContainer';
+// import MobileContainer from '~/components/containers/MobileContainer';
+
+interface BlogPost {
+  posts: number[];
+}
 
 function App() {
-  const [count, setCount] = useState(0);
+  const dummyPost: BlogPost = {
+    posts: [1, 2, 3, 4],
+  };
+
+  const numberOfComments = function (post: BlogPost) {
+    return post.posts.length;
+  };
+
+  const doThing = () => {
+    console.log('this is do thing');
+  };
 
   return (
-    <div className="App">
-      <DesktopContainer>
-        <Header />
-      </DesktopContainer>
+    <div className="flex flex-col h-full w-full">
+      <Header />
 
-      <MobileContainer>
-        <Hero />
-      </MobileContainer>
+      <div className="flex justify-center">
+        <div className="w-full lg:w-3/4">
+          <Card>
+            <Post
+              postTitle={'Post 1'}
+              postContents={'Some really dope contents'}
+            />
 
-      {/* <header className="App-header">
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header> */}
+            <Button
+              buttonLabel={`Show comments (${numberOfComments(dummyPost)})`}
+              click={doThing}
+            />
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }
