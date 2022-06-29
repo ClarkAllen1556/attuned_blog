@@ -9,40 +9,52 @@ import Button from './components/Button';
 // import MobileContainer from '~/components/containers/MobileContainer';
 
 interface BlogPost {
-  comments: number[];
+  author: string;
+  title: string;
+  content: string;
+  comments: {
+    content: string;
+    author: string;
+  }[];
 }
 
 function App() {
-  const dummyPost: BlogPost = {
-    comments: [1, 2, 3, 4],
-  };
-
-  const numberOfComments = function (post: BlogPost) {
-    return post.comments.length;
-  };
+  const dummyPosts: BlogPost[] = [
+    {
+      author: 'ac1556',
+      title: 'Why linux is awesome!',
+      content:
+        'cause it makes your better than everyone else. trust me, I use linux.',
+      comments: [
+        {
+          content: 'i like apples',
+          author: 'sheep',
+        },
+        {
+          content: 'windows is better',
+          author: 'moneybags',
+        },
+      ],
+    },
+  ];
 
   const doThing = () => {
     console.log('this is do thing');
   };
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div>
       <Header />
 
-      <div className="flex justify-center">
-        <div className="w-full lg:w-3/4">
+      <div className="w-full p-8 max-w-5xl ml-auto mr-auto">
+        {dummyPosts.map((p) => (
           <Card>
-            <Post
-              postTitle={'Post 1'}
-              postContents={'Some really dope contents'}
-            />
-
-            <Button
-              buttonLabel={`Show comments (${numberOfComments(dummyPost)})`}
-              click={doThing}
-            />
+            {{
+              content: <Post postTitle={p.title} postContents={p.content} />,
+              footer: <Button buttonLabel="Show comments" click={doThing} />,
+            }}
           </Card>
-        </div>
+        ))}
       </div>
     </div>
   );
