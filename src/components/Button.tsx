@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react';
 import '@styles/button.css';
 
 interface Props {
-  buttonLabel: string;
+  btnLabel: string;
   variant?: 'primary' | 'secondary' | 'text';
   click: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function Button({
-  buttonLabel,
+  btnLabel,
   variant = 'primary',
   click,
 }: Props) {
@@ -30,7 +30,7 @@ export default function Button({
 
   return (
     <button ref={btn} onClick={click}>
-      {buttonLabel}
+      {btnLabel}
     </button>
   );
 }
