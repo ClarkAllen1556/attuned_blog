@@ -41,12 +41,6 @@ module.exports = {
           letterSpacing: '0px',
           textAlign: 'left',
         },
-        // button: {
-        //   background: '#268bd2',
-        //   color: '#ffffff',
-        //   padding: '0.5rem',
-        //   borderRadius: '0.25rem',
-        // },
       });
     },
   ],

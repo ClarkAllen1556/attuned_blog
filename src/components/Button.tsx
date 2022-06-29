@@ -1,14 +1,35 @@
+import { useEffect, useRef } from 'react';
+import '@styles/button.css';
+
 interface Props {
   buttonLabel: string;
+  variant?: 'primary' | 'secondary' | 'text';
   click: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function Button({ buttonLabel, click }: Props) {
+export default function Button({
+  buttonLabel,
+  variant = 'primary',
+  click,
+}: Props) {
+  const btn = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    switch (variant) {
+      case 'text':
+        btn.current?.classList.add('txt-button');
+        break;
+      case 'primary':
+        btn.current?.classList.add('primary-button');
+        break;
+      case 'secondary':
+        btn.current?.classList.add('secondary-button');
+        break;
+    }
+  }, []);
+
   return (
-    <button
-      className="p-2 rounded shadow-md bg-sol-blue-1 text-white-1 active:bg-sol-yellow-1"
-      onClick={click}
-    >
+    <button ref={btn} onClick={click}>
       {buttonLabel}
     </button>
   );
