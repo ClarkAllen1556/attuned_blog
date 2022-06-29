@@ -19,6 +19,7 @@
     "paths": {
       "~/*": ["./*"],
       "@assets*": ["./src/assets*"],
+      "@styles*": ["./src/assets/styles/*"],
       "@public*": ["./src/public*"],
       "@/*": ["./*"]
     },
