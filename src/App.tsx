@@ -9,16 +9,16 @@ import Button from './components/Button';
 // import MobileContainer from '~/components/containers/MobileContainer';
 
 interface BlogPost {
-  posts: number[];
+  comments: number[];
 }
 
 function App() {
   const dummyPost: BlogPost = {
-    posts: [1, 2, 3, 4],
+    comments: [1, 2, 3, 4],
   };
 
   const numberOfComments = function (post: BlogPost) {
-    return post.posts.length;
+    return post.comments.length;
   };
 
   const doThing = () => {
