@@ -1,10 +1,11 @@
 import Header from '~/components/Header';
-import Card from '~/components/Card';
-import Post from '~/components/Post';
+// import Card from '~/components/Card';
+// import Post from '~/components/Post';
 import Button from '~/components/Button';
 import Search from '~/components/Search';
 import Footer from '~/components/Footer';
 import ThemeSwitch from '~/features/theme/ThemeSwitch';
+import Feed from '~/features/feed/Feed';
 
 interface BlogPost {
   id: number;
@@ -46,24 +47,6 @@ function App() {
     },
   ];
 
-  const showComments = (postId: number) => {
-    console.log(dummyPosts.find((p) => p.id === postId)?.comments);
-  };
-
-  function showCommentsButton(post: BlogPost) {
-    if (post.comments.length) {
-      return (
-        <Button
-          variant="text"
-          btnLabel={`Show comments (${post.comments.length})`}
-          click={() => showComments(post.id)}
-        />
-      );
-    }
-
-    return <em> No comments </em>;
-  }
-
   return (
     <div>
       <Header>
@@ -71,16 +54,7 @@ function App() {
         <Search placeHolder="Search..." />
       </Header>
 
-      <div className="w-full p-8 max-w-5xl ml-auto mr-auto">
-        {dummyPosts.map((p) => (
-          <Card>
-            {{
-              content: <Post postTitle={p.title} postContents={p.content} />,
-              footer: showCommentsButton(p),
-            }}
-          </Card>
-        ))}
-      </div>
+      <Feed posts={dummyPosts} />
 
       <Footer>
         <Button

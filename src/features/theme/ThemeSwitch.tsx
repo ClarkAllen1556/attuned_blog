@@ -1,5 +1,9 @@
-import { useAppDispatch, useAppSelector } from '~/hooks';
-import { toggleDarkTheme, enableDarkTheme, disableDarkTheme } from './theme';
+import { useAppDispatch, useAppSelector } from '~/common/hooks';
+import {
+  toggleDarkTheme,
+  enableDarkTheme,
+  disableDarkTheme,
+} from '~/features/theme/theme';
 import moonIcon from '@assets/img/moon_icon.svg';
 import sunIcon from '@assets/img/sun_icon.svg';
 import { useEffect } from 'react';
