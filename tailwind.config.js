@@ -48,4 +48,5 @@ module.exports = {
       });
     },
   ],
+  darkMode: 'class',
 };

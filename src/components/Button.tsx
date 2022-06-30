@@ -29,7 +29,7 @@ export default function Button({
   }, []);
 
   return (
-    <button ref={btn} onClick={click}>
+    <button ref={btn} onClick={click} className="select-none">
       {btnLabel}
     </button>
   );

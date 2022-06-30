@@ -7,7 +7,7 @@ export default function Header({ children }: { children?: ReactNode }) {
         <span className="text-sol-black-1 mr-2">~$</span>UrbanBlog
       </h1>
 
-      <div>{children}</div>
+      <div className="flex gap-2">{children}</div>
     </header>
   );
 }

@@ -4,6 +4,7 @@ import Post from '~/components/Post';
 import Button from '~/components/Button';
 import Search from '~/components/Search';
 import Footer from '~/components/Footer';
+import ThemeSwitch from '~/features/theme/ThemeSwitch';
 
 interface BlogPost {
   id: number;
@@ -66,6 +67,7 @@ function App() {
   return (
     <div>
       <Header>
+        <ThemeSwitch />
         <Search placeHolder="Search..." />
       </Header>
 
