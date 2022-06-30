@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import '@styles/button.css';
 
+type Variant = 'primary' | 'secondary' | 'text';
+
 interface Props {
   btnLabel: string;
-  variant?: 'primary' | 'secondary' | 'text';
+  variant?: Variant;
   click: React.MouseEventHandler<HTMLButtonElement>;
 }
 

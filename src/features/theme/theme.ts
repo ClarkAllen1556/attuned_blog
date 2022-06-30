@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+type Theme = 'dark' | 'light'
+
 interface ThemeState {
-  currentTheme: 'dark' | 'light';
+  currentTheme: Theme
   osPrefersDarkTheme: boolean;
 }
 
@@ -41,14 +43,18 @@ function _osPrefersDarkTheme(): boolean {
   );
 }
 
-function _disableDarkTheme(state: ThemeState): void {
+function _disableDarkTheme(state: ThemeState): ThemeState {
   document.documentElement.classList.remove('dark');
   state.currentTheme = 'light';
+
+  return state;
 }
 
-function _enableDarkTheme(state: ThemeState): void {
+function _enableDarkTheme(state: ThemeState): ThemeState {
   document.documentElement.classList.add('dark');
   state.currentTheme = 'dark';
+
+  return state;
 }
 
 function _saveThemeToLocalStorage(state: ThemeState) {
