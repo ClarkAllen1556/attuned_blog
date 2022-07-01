@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface SearchState {
-  query: string | null;
+  query?: string;
 }
 
 const initialState: SearchState = {
-  query: null,
+  query: undefined,
 };
 
 export const searchSlice = createSlice({

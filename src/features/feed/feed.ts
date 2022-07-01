@@ -47,7 +47,7 @@ export const populateFeed = createAsyncThunk(
 
 export const searchFeed = createAsyncThunk(
   'feed/searchFeed',
-  async (query: string | null) => {
+  async (query?: string) => {
     const posts = await searchPosts(query);
 
     return posts;
