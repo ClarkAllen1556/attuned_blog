@@ -13,8 +13,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log('in use effect');
-    dispatch(populateFeed({ page: 1, limit: 50 }));
+    dispatch(populateFeed({ limit: 5 }));
   }, []);
 
   return (

@@ -24,7 +24,7 @@ export const feedSlice = createSlice({
 });
 
 export const populateFeed = createAsyncThunk(
-  'feed/fetchPosts',
+  'feed/populateFeed',
   async ({ page, limit }: IRequest) => {
     const posts = await fetchPosts({ page, limit });
 
