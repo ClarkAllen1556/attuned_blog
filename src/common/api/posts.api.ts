@@ -9,14 +9,6 @@ function fetchPosts(opts: IRequest): Promise<IPost[]> {
   return _fetchPosts(opts);
 }
 
-function searchPosts(query?: string): Promise<IPost[]> {
-  return fetch(POST_URI + '?_limit=5&' + `q=${query}`, {
-    method: 'GET',
-  }).then((resp) => {
-    return resp.json();
-  });
-}
-
 function _fetchPosts({
   page = 1,
   limit = 5,
@@ -32,4 +24,4 @@ function _fetchPosts({
   });
 }
 
-export { fetchPosts, searchPosts };
+export { fetchPosts };
