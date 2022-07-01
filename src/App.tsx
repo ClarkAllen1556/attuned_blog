@@ -5,7 +5,11 @@ import Footer from '~/components/Footer';
 import ThemeSwitch from '~/features/theme/ThemeSwitch';
 import Feed from '~/features/feed/Feed';
 import { useAppDispatch, useAppSelector } from '~/common/hooks';
-import { populateFeed } from '~/features/feed/feed';
+import {
+  decrementPage,
+  incrementPage,
+  populateFeed,
+} from '~/features/feed/feed';
 import { useEffect } from 'react';
 
 function App() {
@@ -13,8 +17,16 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(populateFeed({ limit: 5 }));
-  }, []);
+    dispatch(populateFeed({ page: feed.currentPage, limit: 5 }));
+  }, [feed.currentPage]);
+
+  function nextPage() {
+    dispatch(incrementPage());
+  }
+
+  function previousPage() {
+    dispatch(decrementPage());
+  }
 
   return (
     <div>
@@ -29,13 +41,11 @@ function App() {
         <Button
           btnLabel="Prev"
           variant="secondary"
-          click={() => console.log('prev')}
+          click={previousPage}
+          isDisabled={feed.currentPage === 1}
         />
-        <Button
-          btnLabel="Next"
-          variant="secondary"
-          click={() => console.log('next')}
-        />
+        <div> Current page: {feed.currentPage} </div>
+        <Button btnLabel="Next" variant="secondary" click={nextPage} />
       </Footer>
     </div>
   );

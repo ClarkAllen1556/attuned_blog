@@ -6,16 +6,25 @@ import { IRequest } from '~/common/interfaces/Request.interface';
 
 interface FeedState {
   posts: IPost[];
+  currentPage: number;
 }
 
 const initialState: FeedState = {
   posts: [],
+  currentPage: 1,
 };
 
 export const feedSlice = createSlice({
   name: 'feed',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    incrementPage: (state) => {
+      state.currentPage++;
+    },
+    decrementPage: (state) => {
+      state.currentPage--;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(populateFeed.fulfilled, (state, action) => {
       state.posts = action.payload;
@@ -33,3 +42,4 @@ export const populateFeed = createAsyncThunk(
 );
 
 export default feedSlice.reducer;
+export const { incrementPage, decrementPage } = feedSlice.actions;

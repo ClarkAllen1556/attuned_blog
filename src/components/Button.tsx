@@ -7,12 +7,14 @@ interface Props {
   btnLabel: string;
   variant?: Variant;
   click: React.MouseEventHandler<HTMLButtonElement>;
+  isDisabled?: boolean;
 }
 
 export default function Button({
   btnLabel,
   variant = 'primary',
   click,
+  isDisabled,
 }: Props) {
   const btn = useRef<HTMLButtonElement>(null);
 
@@ -31,7 +33,12 @@ export default function Button({
   }, []);
 
   return (
-    <button ref={btn} onClick={click} className="select-none">
+    <button
+      ref={btn}
+      onClick={click}
+      disabled={isDisabled}
+      className="select-none"
+    >
       {btnLabel}
     </button>
   );
