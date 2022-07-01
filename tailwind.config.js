@@ -41,6 +41,9 @@ module.exports = {
           letterSpacing: '0px',
           textAlign: 'left',
         },
+        h3: {
+          fontWeight: '500',
+        },
         em: {
           color: '#93a1a1',
           userSelect: 'none',

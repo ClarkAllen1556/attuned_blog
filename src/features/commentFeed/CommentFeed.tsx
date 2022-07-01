@@ -15,10 +15,15 @@ function CommentFeed({ postId }: Props) {
   }, [postId]);
 
   return (
-    <div>
+    <div className="border-t border-sol-grey-1 pt-2">
       {comments.postComments.map((c) => (
-        <div>
-          {c.id} : {c.body}
+        <div className="mb-1">
+          <h3>{c.name}:</h3>
+          <div className="border-l border-sol-grey-1">
+            <p className="pl-4">{c.body}</p>
+
+            <div className="pl-2 italic">{c.email}</div>
+          </div>
         </div>
       ))}
     </div>
