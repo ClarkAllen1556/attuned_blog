@@ -4,11 +4,11 @@ import { IComment } from '~/common/interfaces/Comment.interface';
 import { IRequest } from '~/common/interfaces/Request.interface';
 
 interface CommentState {
-  comments: IComment[];
+  postComments: IComment[];
 }
 
 const initialState: CommentState = {
-  comments: [],
+  postComments: [],
 };
 
 export const commentSlice = createSlice({
@@ -17,7 +17,7 @@ export const commentSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(populateComments.fulfilled, (state, action) => {
-      state.comments = action.payload;
+      state.postComments = action.payload;
     });
   },
 });
