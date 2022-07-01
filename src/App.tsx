@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
+
 import Header from '~/components/Header';
 import Button from '~/components/Button';
 import Search from '~/features/search/Search';
 import Footer from '~/components/Footer';
+
+import { useAppDispatch, useAppSelector } from '~/common/hooks';
+
 import ThemeSwitch from '~/features/theme/ThemeSwitch';
 import Feed from '~/features/feed/Feed';
-import { useAppDispatch, useAppSelector } from '~/common/hooks';
 import {
   decrementPage,
   incrementPage,
   populateFeed,
-  searchFeed,
 } from '~/features/feed/feed';
 
 function App() {
@@ -19,11 +21,11 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(searchFeed(search.query));
+    dispatch(populateFeed({ query: search.query }));
   }, [search.query]);
 
   useEffect(() => {
-    dispatch(populateFeed({ page: feed.currentPage }));
+    dispatch(populateFeed({ page: feed.currentPage, query: search.query }));
   }, [feed.currentPage]);
 
   function nextPage() {

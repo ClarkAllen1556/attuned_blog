@@ -9,7 +9,7 @@ function fetchPosts(opts: IRequest): Promise<IPost[]> {
   return _fetchPosts(opts);
 }
 
-function searchPosts(query: string | null): Promise<IPost[]> {
+function searchPosts(query?: string): Promise<IPost[]> {
   return fetch(POST_URI + '?_limit=5&' + `q=${query}`, {
     method: 'GET',
   }).then((resp) => {
@@ -17,10 +17,17 @@ function searchPosts(query: string | null): Promise<IPost[]> {
   });
 }
 
-function _fetchPosts({ page = 1, limit = 5 }: IRequest): Promise<IPost[]> {
-  return fetch(POST_URI + '?' + createQuery({ page, limit }), {
-    method: 'GET',
-  }).then((resp) => {
+function _fetchPosts({
+  page = 1,
+  limit = 5,
+  query = '',
+}: IRequest): Promise<IPost[]> {
+  return fetch(
+    POST_URI + '?' + createQuery({ _page: page, _limit: limit, q: query }),
+    {
+      method: 'GET',
+    }
+  ).then((resp) => {
     return resp.json();
   });
 }
