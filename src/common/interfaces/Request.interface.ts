@@ -1,5 +1,5 @@
 export interface IRequest {
-  page?: 1;
-  limit?: 5;
+  page?: number;
+  limit?: number;
   postId?: number;
 }

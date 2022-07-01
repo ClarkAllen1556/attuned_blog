@@ -3,16 +3,16 @@ import { IRequest } from '~/common/interfaces/Request.interface';
 
 const COMMENT_URI = 'https://jsonplaceholder.typicode.com/comments';
 
-function fetchComments({ page, limit }: IRequest): Promise<IComment[]> {
-  return _fetchComments({ page, limit });
+function fetchComments(opts: IRequest): Promise<IComment[]> {
+  return _fetchComments(opts);
 }
 
 function fetchCommentsByPostId(opts: IRequest) {
   return _fetchComments(opts);
 }
 
-function _fetchComments(opts: IRequest) {
-  return fetch(COMMENT_URI + '?' + _createQuery(opts), {
+function _fetchComments({ page = 1, limit = 5, postId }: IRequest) {
+  return fetch(COMMENT_URI + '?' + _createQuery({ page, limit, postId }), {
     method: 'GET',
   }).then((resp) => {
     return resp.json();
