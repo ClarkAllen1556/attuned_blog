@@ -1,11 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type Theme = 'dark' | 'light';
-
-interface ThemeState {
-  currentTheme: Theme;
-  osPrefersDarkTheme: boolean;
-}
+import { Theme, ThemeState } from '~/common/interfaces/theme.interface';
 
 const initialState: ThemeState = {
   currentTheme: _osPrefersDarkTheme() ? 'dark' : 'light',

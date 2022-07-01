@@ -1,11 +1,13 @@
 import { Middleware } from '@reduxjs/toolkit';
 
+import { Theme } from '~/common/interfaces/theme.interface';
+
 export const localStorageMiddleware: Middleware =
   (storeApi) => (next) => (action) => {
     let resultState = next(action);
 
     if (action.type === 'theme/setTheme') {
-      const currentTheme = storeApi.getState().theme.currentTheme;
+      const currentTheme: Theme = storeApi.getState().theme.currentTheme;
 
       switch (currentTheme) {
         case 'light':
