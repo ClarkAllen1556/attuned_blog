@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import Header from '~/components/Header';
 import Button from '~/components/Button';
-import Search from '~/components/Search';
+import Search from '~/features/search/Search';
 import Footer from '~/components/Footer';
 import ThemeSwitch from '~/features/theme/ThemeSwitch';
 import Feed from '~/features/feed/Feed';
@@ -9,15 +10,20 @@ import {
   decrementPage,
   incrementPage,
   populateFeed,
+  searchFeed,
 } from '~/features/feed/feed';
-import { useEffect } from 'react';
 
 function App() {
   const feed = useAppSelector((state) => state.feed);
+  const search = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(populateFeed({ page: feed.currentPage, limit: 5 }));
+    dispatch(searchFeed(search.query));
+  }, [search.query]);
+
+  useEffect(() => {
+    dispatch(populateFeed({ page: feed.currentPage }));
   }, [feed.currentPage]);
 
   function nextPage() {

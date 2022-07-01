@@ -9,16 +9,20 @@ function fetchPosts(opts: IRequest): Promise<IPost[]> {
   return _fetchPosts(opts);
 }
 
-function _fetchPosts({
-  page = 1,
-  limit = 5,
-  query,
-}: IRequest): Promise<IPost[]> {
-  return fetch(POST_URI + '?' + createQuery({ page, limit, query }), {
+function searchPosts(query: string | null): Promise<IPost[]> {
+  return fetch(POST_URI + '?_limit=5&' + `q=${query}`, {
     method: 'GET',
   }).then((resp) => {
     return resp.json();
   });
 }
 
-export { fetchPosts };
+function _fetchPosts({ page = 1, limit = 5 }: IRequest): Promise<IPost[]> {
+  return fetch(POST_URI + '?' + createQuery({ page, limit }), {
+    method: 'GET',
+  }).then((resp) => {
+    return resp.json();
+  });
+}
+
+export { fetchPosts, searchPosts };
