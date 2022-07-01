@@ -1,4 +1,4 @@
-<img width="200" height="200" src="https://raw.githubusercontent.com/ClarkAllen1556/attunded_blog/dev/src/assets/img/logo.svg" class="jop-noMdConv">
+<img width="150" height="150" src="https://raw.githubusercontent.com/ClarkAllen1556/attunded_blog/dev/src/assets/img/logo.svg" />
 
 ***
 
@@ -58,4 +58,4 @@ The application uses a dummy API provided by [JSONPlaceholder](https://jsonplace
 
 ### Styling
 
-Styling is intended to match other sites that I host on the [urbanlife.me](https://urbanlife.me) domain, such as [UrbanConversion](https://conversion.urbanlife.me). The color pallet is from Ethan Schoonover's [Solarized](https://ethanschoonover.com/solarized/), and the font family is Mozilla's [Zilla Slab](https://blog.mozilla.org/opendesign/zilla-slab-common-language-shared-font/), and the icons are from [OpenMoji](https://openmoji.org/)
+Styling is intended to match other sites that I host on the [urbanlife.me](https://urbanlife.me) domain, such as [UrbanConversion](https://conversion.urbanlife.me). The color pallet is from Ethan Schoonover's [Solarized](https://ethanschoonover.com/solarized/), and the font family is Mozilla's [Zilla Slab](https://blog.mozilla.org/opendesign/zilla-slab-common-language-shared-font/), and the icons are from [OpenMoji](https://openmoji.org/).
