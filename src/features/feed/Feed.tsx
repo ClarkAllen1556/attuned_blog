@@ -28,12 +28,14 @@ function Feed({ posts }: Props) {
   return (
     <div className="w-full p-8 max-w-5xl ml-auto mr-auto">
       {posts.map((p) => (
-        <Card>
+        // <div key={p.id.toString()}>
+        <Card key={p.id}>
           {{
             content: <Post postTitle={p.title} postContents={p.body} />,
             footer: showCommentsButton(p),
           }}
         </Card>
+        // </div>
       ))}
     </div>
   );
