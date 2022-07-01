@@ -15,7 +15,6 @@ function Feed({ posts }: Props) {
   function showComments() {
     return (
       <>
-        <CommentFeed postId={selectedPost} />
         <div>
           <Button
             variant="text"
@@ -23,6 +22,7 @@ function Feed({ posts }: Props) {
             click={() => setSelectedPost(undefined)}
           />
         </div>
+        <CommentFeed postId={selectedPost} />
       </>
     );
   }
