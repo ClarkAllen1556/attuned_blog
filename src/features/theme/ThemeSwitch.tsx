@@ -1,9 +1,5 @@
 import { useAppDispatch, useAppSelector } from '~/common/hooks';
-import {
-  toggleDarkTheme,
-  enableDarkTheme,
-  disableDarkTheme,
-} from '~/features/theme/theme';
+import { setTheme } from '~/features/theme/theme';
 import moonIcon from '@assets/img/moon_icon.svg';
 import sunIcon from '@assets/img/sun_icon.svg';
 import { useEffect } from 'react';
@@ -14,14 +10,18 @@ function ThemeSwitch() {
 
   useEffect(() => {
     if (localStorage.UL_THEME === 'dark' || theme.osPrefersDarkTheme) {
-      dispatch(enableDarkTheme());
+      dispatch(setTheme('dark'));
     } else {
-      dispatch(disableDarkTheme());
+      dispatch(setTheme('light'));
     }
   }, []);
 
   function toggleTheme() {
-    dispatch(toggleDarkTheme());
+    if (theme.currentTheme === 'dark') {
+      dispatch(setTheme('light'));
+    } else {
+      dispatch(setTheme('dark'));
+    }
   }
 
   function currentThemeIcon() {

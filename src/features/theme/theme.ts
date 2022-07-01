@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type Theme = 'dark' | 'light'
+type Theme = 'dark' | 'light';
 
 interface ThemeState {
-  currentTheme: Theme
+  currentTheme: Theme;
   osPrefersDarkTheme: boolean;
 }
 
@@ -16,24 +16,13 @@ export const themeSlice = createSlice({
   name: 'theme',
   initialState: initialState,
   reducers: {
-    toggleDarkTheme: (state) => {
-      if (state.currentTheme === 'dark') {
-        _disableDarkTheme(state);
-      } else {
-        _enableDarkTheme(state);
-      }
-
-      _saveThemeToLocalStorage(state);
-
-      return state;
+    setTheme: (state, action: PayloadAction<Theme>) => {
+      state.currentTheme = action.payload;
     },
-    enableDarkTheme: (state) => _enableDarkTheme(state),
-    disableDarkTheme: (state) => _disableDarkTheme(state),
   },
 });
 
-export const { toggleDarkTheme, enableDarkTheme, disableDarkTheme } =
-  themeSlice.actions;
+export const { setTheme } = themeSlice.actions;
 export default themeSlice.reducer;
 
 function _osPrefersDarkTheme(): boolean {
@@ -41,22 +30,4 @@ function _osPrefersDarkTheme(): boolean {
     !('UL_THEME' in localStorage) &&
     window.matchMedia('(prefers-color-scheme: dark)').matches
   );
-}
-
-function _disableDarkTheme(state: ThemeState): ThemeState {
-  document.documentElement.classList.remove('dark');
-  state.currentTheme = 'light';
-
-  return state;
-}
-
-function _enableDarkTheme(state: ThemeState): ThemeState {
-  document.documentElement.classList.add('dark');
-  state.currentTheme = 'dark';
-
-  return state;
-}
-
-function _saveThemeToLocalStorage(state: ThemeState) {
-  localStorage.setItem('UL_THEME', state.currentTheme);
 }
