@@ -1,38 +1,50 @@
-import { useAppDispatch, useAppSelector } from '~/common/hooks';
+import { useState } from 'react';
 import { IPost } from '~/common/interfaces/Post.interface';
 import Button from '~/components/Button';
 import Card from '~/components/Card';
 import Post from '~/components/Post';
-import { populateComments } from '../comment/comment';
+import CommentFeed from '~/features/commentFeed/CommentFeed';
 
 interface Props {
   posts: IPost[];
 }
 
 function Feed({ posts }: Props) {
-  const comments = useAppSelector((state) => state.comments);
-  const dispatch = useAppDispatch();
+  const [selectedPost, setSelectedPost] = useState<number | undefined>();
 
-  const showComments = (postId: number) => {
-    dispatch(populateComments({ postId: postId }));
-  };
+  function showComments() {
+    return (
+      <>
+        <CommentFeed postId={selectedPost} />
+        <div>
+          <Button
+            variant="text"
+            btnLabel="Hide comments"
+            click={() => setSelectedPost(undefined)}
+          />
+        </div>
+      </>
+    );
+  }
 
   function showCommentsButton(post: IPost) {
     return (
       <Button
         variant="text"
-        btnLabel={`Show comments `}
-        click={() => showComments(post.id)}
+        btnLabel={`Show comments`}
+        click={() => setSelectedPost(post.id)}
       />
     );
   }
+
   return (
     <div className="w-full p-8 max-w-5xl ml-auto mr-auto">
       {posts.map((p) => (
         <Card key={p.id}>
           {{
             content: <Post postTitle={p.title} postContents={p.body} />,
-            footer: showCommentsButton(p),
+            footer:
+              selectedPost === p.id ? showComments() : showCommentsButton(p),
           }}
         </Card>
       ))}
