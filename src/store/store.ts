@@ -9,7 +9,7 @@ const store = configureStore({
     feed: feedReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(localStorageMiddleware),
+    getDefaultMiddleware().concat(localStorageMiddleware),
 });
 
 export default store;
