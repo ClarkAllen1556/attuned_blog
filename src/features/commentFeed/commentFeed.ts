@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCommentsByPostId } from '~/common/api/comments.api';
+import { fetchComments } from '~/common/api/comments.api';
 import { IComment } from '~/common/interfaces/Comment.interface';
 import { IRequest } from '~/common/interfaces/Request.interface';
 
@@ -24,8 +24,8 @@ export const commentSlice = createSlice({
 
 export const populateComments = createAsyncThunk(
   'comment/populateComments',
-  async (opts: IRequest) => {
-    const comments = await fetchCommentsByPostId(opts);
+  async ({ postId }: IRequest) => {
+    const comments = await fetchComments({ postId });
 
     return comments;
   }
